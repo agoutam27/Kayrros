@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>Kayrros Assignment</title>
+</head>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" rel="stylesheet" />
+
+<body>
+
+    <div id="navigation">
+        <button type="button" onclick="myApp.show(1)">Add Asset</button>
+        <button type="button" onclick="myApp.show(2)">Show List</button>
+        <button type="button" onclick="myApp.show(3)">Queries</button>
+    </div>
+
+    <div id="add-asset" style="display: none;">
+        <h1>Add an asset</h1>
+        <form action="#">
+            <div><label> Assest Name </label><input id="name" type="text" /></div>
+            <div><label> Category </label><input id="category" type="text" /></div>
+            <div><label> Income </label><input id="income" type="number" /></div>
+            <div><label> Area </label><input id="area" type="number" /></div>
+            <div><label> Labels </label><input id="label" type="text" placeholder="enter comma separated labels" />
+            </div>
+            <!--<button type="button" onclick="myApp.addTag()"> Add </button> -->
+            <button type="submit" onclick="myApp.addAsset()">Submit</button>
+        </form>
+    </div>
+    <div id="asset-list" style="display: none;">
+        <h1>Asset List</h1>
+        <div><label>Tag Name</label><input id="label-view" type="text" placeholder="enter tag" /> </div>
+        <button type="button" onclick="myApp.showList()">Show list</button>
+        <table id="list-view">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Area</th>
+                    <th>Income</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody id="list-body"></tbody>
+        </table>
+    </div>
+    <div id="queries" style="display: none;">
+        <div>
+            <label>Select Output</label>
+            <select id="output-type">
+                <option value="area" selected>area</option>
+                <option value="income">income</option>
+            </select>
+        </div>
+        <div>
+            <label>Enter category</label>
+            <input type="text" id="q-category" />
+        </div>
+        <div>
+            <label>Enter Labels</label>
+            <input type="text" id="q-labels" placeholder="Enter comma separated labels" />
+        </div>
+        <div>
+            <label>Select Operation</label>
+            <select id="q-op">
+                <option value="and" selected>AND</option>
+                <option value="or">OR</option>
+            </select>
+        </div>
+        <div>Output : <span id="q-output"></span></div>
+        <button type="button" onclick="myApp.getResult()">Get Output</button>
+    </div>
+
+    
+    <hr />
+    <div id="map" style="height: 500px;"></div>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js" integrity="sha256-siofc4Uwjlra3YWkwthOn8Uj69cNN4aMug/iOHNiRgs=" crossorigin="anonymous"></script>
+  
+  <script src="kayrros.js"></script>
+  <script src="leaflet_kayrros.js"></script>
+</body>
+
+</html>
